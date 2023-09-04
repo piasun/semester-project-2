@@ -1,5 +1,5 @@
-import { displayErrorMessage } from "./functions/errormessage.js";
-import { completeListings } from "./api/url.js";
+import { displayErrorMessage } from "../functions/errormessage.js";
+import { completeListings } from "../api/url.js";
 
 const itemContainer = document.querySelector(".item-details");
 const specificItem = "?_seller=true&_bids=true";
