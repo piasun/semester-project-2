@@ -36,7 +36,7 @@ getItem(getItemUrl);
 
 function createDetailsHtml(item) {
     itemContainer.innerHTML = `<h1>${item.title}</h1>
-                                <img src="${item.media}" class="card-img" alt=".." />
+                                <img src="${item.media[0]}" class="card-img" alt=".." />
                                 <div class="listing_info">
                                     <p class="bid_amount">Bids: ${item._count.bids}</p>
                                     <div class="category">

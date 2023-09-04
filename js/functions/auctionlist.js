@@ -10,7 +10,7 @@ export function auctionList(bid) {
                                         <div class="col-lg-4 col-md-6 col-sm-12">
                                             <a href="specific-item.html?id=${bid[i].id}" class="listing">
                                             <div class="card mt-5">
-                                                <img src="${bid[i].media}" class="card-img" alt=".." />
+                                                <img src="${bid[i].media[0]}" class="card-img" alt=".." />
                                                 <div class="listing_info">
                                                     <h3>${bid[i].title}</h3>
                                                     <p class="bid_amount">Bids: ${bid[i]._count.bids}</p>
