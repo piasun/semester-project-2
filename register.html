@@ -12,6 +12,7 @@
       width="32"
       height="32"
     />
+    <script type="module" src="js/users/register.js"></script>
     <link rel="stylesheet" href="css/style.css" />
     <script
       src="https://kit.fontawesome.com/b318972c4d.js"
@@ -68,7 +69,7 @@
               <div class="mb-3">
                 <label for="name" class="form-label">Username</label>
                 <input type="name" class="form-control" id="name" />
-                <div id="name-error"></div>
+                <div id="name-msg"></div>
               </div>
               <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
@@ -78,24 +79,22 @@
                   id="email"
                   aria-describedby="emailHelp"
                 />
-                <div id="email-error"></div>
+                <div id="email-msg"></div>
               </div>
               <div class="mb-3">
                 <label for="avatar" class="form-label">avatar-url</label>
                 <input type="avatar" class="form-control" id="avatar" />
-                <div id="avatar-error"></div>
+                <div id="avatar-msg"></div>
               </div>
               <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  id="exampleInputPassword1"
-                />
-                <div id="password-error"></div>
+                <input type="password" class="form-control" id="password" />
+                <div id="password-msg"></div>
               </div>
               <div id="errorMessage"></div>
-              <button type="submit" class="btn btn-primary">Register</button>
+              <button type="submit" id="submit" class="btn btn-primary">
+                Register
+              </button>
             </form>
           </div>
         </div>
