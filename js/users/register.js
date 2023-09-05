@@ -1,4 +1,7 @@
 import { completeRegister } from "../api/url.js"
+import { isLoggedIn } from "../templates/nav.js"
+
+isLoggedIn();
 
 //DOM elements
 const userReg = document.getElementById("name");
@@ -16,14 +19,16 @@ function validateUser(event) {
 
     const username = userReg.value.trim();
     const email = emailReg.value.trim();
-    const password = passwordReg.value.trim();
     const avatar = avatarReg.value.trim();
+    const password = passwordReg.value.trim();
+   
 
    const newUser = {
        name: username,
        email: email,
-       password: password,
        avatar: avatar,
+       password: password,
+      
    }
 
    regNewUser(registerUrl, newUser);
@@ -112,7 +117,5 @@ function validateForm() {
      else {
         console.log("Please correct the data in the form");
     }
-
-
 
 }
