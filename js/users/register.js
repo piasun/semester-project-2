@@ -28,7 +28,6 @@ function validateUser(event) {
        email: email,
        avatar: avatar,
        password: password,
-      
    }
 
    regNewUser(registerUrl, newUser);
