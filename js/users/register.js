@@ -31,7 +31,7 @@ function validateUser(event) {
    }
 
    regNewUser(registerUrl, newUser);
-   console.log(newUser);
+   
 }
 
 async function regNewUser(url, data) {
@@ -42,9 +42,11 @@ async function regNewUser(url, data) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                Authorization: `Bearer`,
             },
             body: JSON.stringify(data),
         };
+        
         const response = await fetch (url, options);
         const result = await response.json();
 

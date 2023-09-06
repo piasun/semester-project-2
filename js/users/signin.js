@@ -1,10 +1,11 @@
 import { completeLogin } from "../api/url.js";
+import { displayErrorMessage } from "../functions/errormessage.js";
 import { isLoggedIn } from "../templates/nav.js";
 
 isLoggedIn();
 
-const emailInput = document.querySelector("email");
-const passwordInput = document.querySelector("password");
+const emailInput = document.querySelector("#email");
+const passwordInput = document.querySelector("#password");
 const submitBtn = document.querySelector("#submit");
 
 
@@ -27,29 +28,30 @@ function validateUser(event) {
 const errormessage = document.querySelector(".error-message");
 
 async function signinUser(url, data) {
+    
     try {
         const options = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                Authorization: `Bearer`,
             },
             body: JSON.stringify(data),
         };
-        console.log(url, data, options)
 
         const response = await fetch (url, options);
-        const answer = await response.json();
+        const result = await response.json();
 
-        localStorage.setItem('username', answer.name);
-        localStorage.setItem('accessToken', answer.accessToken);
+        localStorage.setItem('username', result.name);
+        localStorage.setItem('accessToken', result.accessToken);
 
-        if (response.status === 401) {
-            errormessage.innerHTML = answer.errors[0].message;   
-        } else if (response.status === 200) {
-           window.location = "../index.html";
+        if (response.status === 200) {
+            window.location = "profile.html";
+        } else if (response.status === 401) {
+            displayErrorMessage(errormessage);
         }
 
     } catch(error) {
-        console.warn(error);
+        console.log(error);
     }
 }

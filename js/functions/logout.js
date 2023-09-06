@@ -2,7 +2,7 @@ import { clearStorage } from "../storage/localstorage.js";
 
 export function logoutButton() {
 
-    const button = document.querySelector("#logout");
+    const button = document.querySelector(".logout");
 
     if(button) {
         button.onclick = function() {
