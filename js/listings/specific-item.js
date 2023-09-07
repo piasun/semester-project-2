@@ -51,3 +51,8 @@ function createDetailsHtml(item) {
                                 </div>
                                 `;
 }
+
+const createBidBtn = document.querySelector(".create-bid");
+createBidBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+})
