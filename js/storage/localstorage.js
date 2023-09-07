@@ -5,3 +5,7 @@ export function clearStorage() {
 export function saveToken(key, token) {
     localStorage.setItem(key, token);
 }
+
+export function getUsername() {
+    localStorage.getItem(username);
+}

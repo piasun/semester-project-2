@@ -1,5 +1,8 @@
 import { displayErrorMessage } from "../functions/errormessage.js";
 import { completeListings } from "../api/url.js";
+import { isLoggedIn } from "../templates/nav.js";
+
+isLoggedIn();
 
 const itemContainer = document.querySelector(".item-details");
 const specificItem = "?_seller=true&_bids=true";
@@ -42,6 +45,9 @@ function createDetailsHtml(item) {
                                     <div class="category">
                                         <div>#${item.tags}</div>
                                     </div>
+                                </div>
+                                <div>
+                                <button class="create-bid">Create Bid</button>
                                 </div>
                                 `;
 }

@@ -83,7 +83,7 @@
             <div class="col user-image">
               <img
                 src=""
-                id="avatar"
+                id="user-avatar"
                 alt="..."
                 width="120"
                 class="rounded mb-2 img"
@@ -136,8 +136,8 @@
           <div class="col">
             <button id="change-avatar">Change avatar</button>
           </div>
-          <div class="avatar-container">
-            <form class="form-floating change-avatar-form">
+          <div id="avatar-container">
+            <form id="change-avatar-form">
                 <label for="avatarImg">Avatar URL:</label>
                 <input type="url" class="form-control" id="avatarImg" placeholder="URL Image">
                 <button type="submit">Change Avatar</button>
@@ -158,6 +158,7 @@
       <div class="container">
         <div>
           <h2>Bids</h2>
+          <div class="bids-container"></div>
         </div>
         <hr />
         <div id="no-bids"></div>

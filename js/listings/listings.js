@@ -13,7 +13,7 @@ async function getListings() {
 
         auctionList(bid);
 
-    } catch {
+    } catch(error) {
         const listingContainer = document.querySelector(".listings");
         displayErrorMessage(listingContainer);
         console.log(error);
