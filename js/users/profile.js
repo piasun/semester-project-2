@@ -1,6 +1,7 @@
 import { completeProfile } from "../api/url.js";
 import { isLoggedIn } from "../templates/nav.js"
 import { logoutButton } from "../functions/logout.js";
+//import { createNewListing } from "../listings/createListing.js";
 
 isLoggedIn();
 logoutButton();
@@ -62,11 +63,10 @@ function profileOverview(user) {
     const userCredits = document.getElementById("credits");
     userCredits.innerHTML = `Credits: ${user.credits}`    
 
+    console.log(username, useremail, userCredits);
+
     if(user.listings.length === 0) {
         noListings.innerHTML = "You have no listings"
     }
-    
 
 }
-
-
