@@ -1,4 +1,4 @@
-import { auctionList } from "../functions/auctionlist.js";
+import { auctionList } from "./auctionlist.js";
 import { completeListings } from "../api/url.js";
 import { displayErrorMessage } from "../functions/errormessage.js";
 

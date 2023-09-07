@@ -70,17 +70,28 @@
       </div>
     </nav>
 
-    <section>
+    <section id="userdetails">
       <div class="container text-center">
         <div class="row">
-          <div class="col" id="avatar"></div>
-        </div>
-        <div id="userinfo" class="row">
-          <div class="col">
-            <h1 id="name"></h1>
-          </div>
-          <div class="col">
-            <p id="credits"></p>
+          <div id="profile" class="row">
+            <div class="col">
+              <h1 id="username"></h1>
+            </div>
+            <div>
+              <p id="email"></p>
+            </div>
+            <div class="col user-image">
+              <img
+                src=""
+                id="avatar"
+                alt="..."
+                width="120"
+                class="rounded mb-2 img"
+              />
+            </div>
+            <div class="col">
+              <p id="credits"></p>
+            </div>
           </div>
         </div>
       </div>
@@ -91,130 +102,66 @@
           <div class="col">
             <button id="create-listing">Create Listing</button>
           </div>
+          <form id="form-create-listing">
+            <div class="mb-3">
+              <label for="name" class="form-label">Username</label>
+              <input type="name" class="form-control" id="name" />
+              <div id="name-msg"></div>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                aria-describedby="emailHelp"
+              />
+              <div id="email-msg"></div>
+            </div>
+            <div class="mb-3">
+              <label for="avatar" class="form-label">avatar-url</label>
+              <input type="avatar" class="form-control" id="avatar" />
+              <div id="avatar-msg"></div>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" />
+              <div id="password-msg"></div>
+            </div>
+            <div id="errorMessage"></div>
+            <button type="submit" id="submit" class="btn btn-primary">
+              Register
+            </button>
+          </form>
           <div class="col">
             <button id="change-avatar">Change avatar</button>
           </div>
+          <div class="avatar-container">
+            <form class="form-floating change-avatar-form">
+                <label for="avatarImg">Avatar URL:</label>
+                <input type="url" class="form-control" id="avatarImg" placeholder="URL Image">
+                <button type="submit">Change Avatar</button>
+            </form>
+        </div>
         </div>
       </div>
     </section>
     <section>
       <div class="container">
         <div>
-          <p>Listings</p>
+          <h2>Listings</h2>
         </div>
         <hr />
-        <div class="row">
-          <div class="col-md">
-            <div class="card" style="width: 18rem">
-              <img
-                src="/images/bid_small.jpeg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">View Item</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="card" style="width: 18rem">
-              <img
-                src="/images/bid_small.jpeg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">View Item</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="card" style="width: 18rem">
-              <img
-                src="/images/bid_small.jpeg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">View Item</a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div id="no-listings"></div>
+      </section>
+     <section>
+      <div class="container">
         <div>
-          <p>Bids</p>
+          <h2>Bids</h2>
         </div>
         <hr />
-        <div class="row">
-          <div class="col-md">
-            <div class="card" style="width: 18rem">
-              <img
-                src="/images/bid_small.jpeg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">View Item</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="card" style="width: 18rem">
-              <img
-                src="/images/bid_small.jpeg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">View Item</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="card" style="width: 18rem">
-              <img
-                src="/images/bid_small.jpeg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">View Item</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        <div id="no-bids"></div>
+      </section>
 
     <footer>
       <div>Copyright - Pia Sundsby</div>
