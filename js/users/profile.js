@@ -1,43 +1,67 @@
 import { isLoggedIn } from "../templates/nav.js"
 import { logoutButton } from "../functions/logout.js";
-import { createListingForm } from "../listings/createListing.js";
-import { changeAvatar } from "../functions/updateAvatar.js";
 
 isLoggedIn();
 logoutButton();
 
 const noListings = document.getElementById("no-listings");
 
-function createProfile(profile) {
+async function getProfile (url) {
+    try {
+        const accessToken = localStorage.getItem('accessToken'); 
+        const options = {
+            method: 'GET', 
+            headers : {
+                Authorization: `Bearer ${accessToken}`,
+            }
+        }
 
-    const section = document.getElementById("userdetails");
-    const doc = section.contentEditable.cloneNode(true);
+        const response = await fetch(url, options); 
+        const profile = await response.json()
+        const credits = profile.credits;
+        const signedIn = localStorage.getItem("accessToken");
+        if (signedIn) {
+          document.getElementById("credits").innerHTML = `Credits:
+           ${credits} 
+           `;
+        }
+        profileAccount = profile
+        profileOverview(profileAccount, detailsElement)
+    } catch(error) {
+        console.log(error);
+    }
+}   
 
-    const name = profile.name;
-    const email = profile.email;
-    const avatar = profile.avatar;
-    const credits = profile.credits;
+getProfile(profileUrl);
 
-    doc.querySelector("username").innerText = name;
-    doc.getElementById("email").innerText = email;
-    doc.getElementById("avatar").src = avatar;
-    doc.getElementById("credits").innerText = 'Credits: ${credits}';
+const detailsElement = document.getElementById("user-info");
 
-    const profileContainer = document.getElementById("profile");
-    profileContainer.append(doc);
+function profileOverview(user, details) {
 
-   const createListingBtn = document.getElementById("create-listing");
-   createListingBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    const listingContainer = document.getElementById("form-create-listing");
-    listingContainer.classList.toggle('makeVisible');
-   })
+    details.innerHTML = "";
 
-   createListingForm();
-   changeAvatar();
+    const userImg = user.avatar !=""? `${user.avatar}`:"https://robohash.org/0e1907e79a1a36ee245672467e77792e?set=set4&bgset=&size=400x400";
+    const avatar = document.getElementById("avatar");
+    avatar.src = '${userImg}';
+        console.log(userImg);
 
+    const userName = document.getElementById("username");
+    userName.innerHTML = `${user.name}`;
+
+    const userCredits = document.getElementById("credits");
+    userCredits.innerHTML = `${user.credits}`;
+
+    let userDetails = "";
+    userDetails +=` <div class="mb-5 text-white"> 
+                        <h1 class="mt-0 mb-0">${user.name}</h1> 
+                    </div> `;
+    
+    details.innerHTML = userDetails;
+
+    if(user.listings.length === 0) {
+        noListings.innerHTML = "You have no listings"
+    }
 
 }
 
-createProfile();
 
