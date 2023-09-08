@@ -1,5 +1,3 @@
-
-
 export async function createBid(url, data) {
     try {
         const accessToken = localStorage.getItem("accessToken");
@@ -20,7 +18,7 @@ export async function createBid(url, data) {
         if (response.status === 200) {
           window.location.reload();
         } else {
-          bidErrorMsg.innerHTML = "Something went wrong, please try again";
+          bidErrorMsg.innerHTML ="Something went wrong, please try again";
         }
         console.log(answer);
       } catch (error) {

@@ -12,6 +12,7 @@ export async function getListings() {
 
         auctionList(bid);
 
+
     } catch(error) {
         const listingContainer = document.querySelector(".listings");
         displayErrorMessage(listingContainer);
