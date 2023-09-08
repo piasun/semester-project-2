@@ -1,6 +1,5 @@
 import { displayErrorMessage } from "../functions/errormessage.js";
 import { completeListings } from "../api/url.js";
-import { createBid } from "../functions/createBid.js";
 import { isLoggedIn } from "../templates/nav.js";
 
 isLoggedIn();
@@ -48,20 +47,7 @@ function createDetailsHtml(item) {
                                         <div>#${item.tags}</div>
                                     </div>
                                 </div>
-                                <div>
-                                <div class="bid-container">
-                                <p class="bid-error-msg"></p>
-                                <button class="make-bid">Make Bid</button>
-                                </div>
-                                </div>
                                 `;
-
-    const createBidBtn = document.querySelector(".make-bid");
-    createBidBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        createBid(makeBidUrl);
-        console.log(createBid);
-    })
 }
 
 

@@ -1,6 +1,6 @@
 import { completeListings } from "../api/url";
 
-//const newListingContainer = docment.queryselector(".floating-form");
+
 const itemTitle = document.querySelector(".itemTitle");
 const itemContent = document.querySelector(".itemContent");
 const itemImage = document.querySelector(".itemImage");
@@ -84,7 +84,7 @@ function createNewListingForm(event) {
     }
 
       if (titleMsg.innerHTML === "" && descMsg.innerHTML === "" && mediaMsg.innerHTML === "") {
-        //console.log("Form is submitted!");
+        console.log("Form is submitted!");
      }
      else {
         console.log("Are you sure you have everything right?");

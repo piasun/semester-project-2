@@ -1,3 +1,5 @@
+
+
 export async function createBid(url, data) {
     try {
         const accessToken = localStorage.getItem("accessToken");
@@ -18,7 +20,7 @@ export async function createBid(url, data) {
         if (response.status === 200) {
           window.location.reload();
         } else {
-          bidErrorMsg.innerHTML = result.errors[0].message;
+          bidErrorMsg.innerHTML = "Something went wrong, please try again";
         }
         console.log(answer);
       } catch (error) {
@@ -26,4 +28,35 @@ export async function createBid(url, data) {
       }
     }
 
-
+    function createBidForm(event) {
+        event.preventDefault();
+        const bidInput = document.getElementById("create-bid-input").value.trim();
+        const bidInputMsg = document.getElementById("create-bid-msg");
+        //console.log("Bid elements:", bidInput, bidInputMsg);
+        const bidToSend = parseInt(bidInput);
+        //console.log("bidToSend:", bidToSend);
+      
+        let bidData = {
+          amount: bidToSend,
+        };
+      
+        if (!isNaN(bidToSend)) {
+          //console.log("value is a number");
+        } else {
+          bidInputMsg.innerHTML = "Bid has to be a number.";
+        }
+    
+          // Checking if user is logged in
+          function isLoggedin() {
+            const accessToken = localStorage.getItem("accessToken");
+            if (!accessToken) {
+                
+               alert("You have to sign in to place a bid!");
+               window.location.href = "./login.html";
+            }
+          }
+          
+            isLoggedin();
+      
+        createBid(makeBidUrl, bidData);
+      }
