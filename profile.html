@@ -13,6 +13,7 @@
       height="32"
     />
     <script type="module" src="js/users/profile.js"></script>
+    <script type="module" src="js/listings/createListing.js"></script>
     <link rel="stylesheet" href="css/functions.css" />
     <link rel="stylesheet" href="css/style.css" />
     <script
@@ -107,28 +108,31 @@
             <div class="form-header">
               <h3>Create New Listing</h3>
               <div class="close-form">
-                <img src="images/close-icon.png" alt="">
               </div>
             </div>
             <div class="floating-form-card">
-              <form action="" autocomplete="off">
+              <form>
                 <div class="form-group">
-                    <label for="listingTitle">Title:</label>
-                    <input type="text" class="form-control" id="listingTitle" placeholder="Title">
+                    <p id="titleMsg"></p>
+                    <label for="itemTitle">Title:</label>
+                    <input type="text" class="form-control" id="itemTitle" placeholder="Title">
                 </div>
                 <div class="form-group">
-                    <label for="listingDesc">Description:</label>
-                    <input type="text" class="form-control" id="listingDesc" placeholder="What are you selling?">
+                    <p id="descMsg"></p>
+                    <label for="itemContent">Description:</label>
+                    <input type="text" class="form-control" id="itemContent" placeholder="What are you selling?">
                 </div>
                 <div class="form-group">
-                    <label for="listingImg">Image:</label>
-                    <input type="url" class="form-control" id="listingImg" placeholder="URL Image">
+                    <p id="mediaMsg"></p>
+                    <label for="itemImage">Image:</label>
+                    <input type="url" class="form-control" id="itemImage" placeholder="URL Image">
                 </div>
                 <div class="form-group">
-                    <label for="listingEnd">Ends:</label>
-                    <input type="datetime-local" class="form-control" id="listingEnd" placeholder="End time and Date">
+                    <p id="endbidMsg"></p>
+                    <label for="endBid">Ends:</label>
+                    <input type="datetime-local" class="form-control" id="endBid" placeholder="End time and Date">
                 </div>
-                <button class="form-btn" type="submit">Submit Listing</button>
+                <button class="submitItem" type="submit">Submit Listing</button>
               </form>
             </div>
           </div>

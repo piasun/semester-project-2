@@ -4,7 +4,7 @@ import { displayErrorMessage } from "../functions/errormessage.js";
 
 let url = completeListings;
 
-async function getListings() {
+export async function getListings() {
     try {
 
         const response = await fetch(url);

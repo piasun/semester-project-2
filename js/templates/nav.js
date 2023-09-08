@@ -1,5 +1,4 @@
-
-//import { logoutButton } from "../functions/logout.js";
+//DOM elements - Navigation
 
 const signInNav = document.getElementById("signin-nav");
 const signOutNav = document.getElementById("signout-nav");
