@@ -9,7 +9,6 @@ export async function getListings() {
 
         const response = await fetch(url);
         const bid = await response.json();
-        console.log(bid);
 
         auctionList(bid);
 

@@ -79,7 +79,7 @@ const submitItemBtn = document.querySelector(".submitItem");
 
 const createListing = completeListings;
 
-export async function addListing(url, data) {
+async function addListing(url, data) {
     try {
         const accessToken = localStorage.getItem('accessToken'); 
         const options = {

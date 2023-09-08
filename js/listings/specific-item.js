@@ -1,5 +1,6 @@
 import { displayErrorMessage } from "../functions/errormessage.js";
 import { completeListings } from "../api/url.js";
+import { createBid } from "../functions/createBid.js";
 import { isLoggedIn } from "../templates/nav.js";
 
 isLoggedIn();
@@ -12,6 +13,7 @@ let id = params.get("id");
 
 
 const getItemUrl = `${completeListings}/${id}/${specificItem}`;
+const makeBidUrl = `${completeListings}/${id}/bids`;
 
 async function getItem(url) {
 
@@ -47,12 +49,19 @@ function createDetailsHtml(item) {
                                     </div>
                                 </div>
                                 <div>
-                                <button class="create-bid">Create Bid</button>
+                                <div class="bid-container">
+                                <p class="bid-error-msg"></p>
+                                <button class="make-bid">Make Bid</button>
+                                </div>
                                 </div>
                                 `;
+
+    const createBidBtn = document.querySelector(".make-bid");
+    createBidBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        createBid(makeBidUrl);
+        console.log(createBid);
+    })
 }
 
-const createBidBtn = document.querySelector(".create-bid");
-createBidBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-})
+
