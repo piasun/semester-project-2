@@ -1,9 +1,22 @@
 body {
-    background-color: $background-color;
     min-height: 100vh;
     margin: 0 auto;
   }
 
-  #change-avatar-form {
-    display: none;
-  }
+body {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  background-color: $background-color;
+  color: $font-color;
+}
+
+footer {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: space-between;
+  background-color: $background-color;
+  margin-top: 2rem;
+  font-size: 0.8em;
+  color: $primary;
+  padding: 0.5em;
+}
+

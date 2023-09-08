@@ -11972,7 +11972,23 @@ textarea.form-control-lg {
   }
 }
 body {
-  background-color: #faf6f4;
   min-height: 100vh;
   margin: 0 auto;
+}
+
+body {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  background-color: #faf6f4;
+  color: #53514f;
+}
+
+footer {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: space-between;
+  background-color: #faf6f4;
+  margin-top: 2rem;
+  font-size: 0.8em;
+  color: #152f5f;
+  padding: 0.5em;
 }/*# sourceMappingURL=style.css.map */
