@@ -102,3 +102,5 @@ async function addListing(url, data) {
         console.log(error);
     }
 }
+
+addListing(createListing);

@@ -25,7 +25,7 @@ async function getItem(url) {
         const headTitle = document.querySelector ("title");
         headTitle.innerHTML = `${item.title}`; 
 
-        createDetailsHtml(item);
+        createItemDetails(item);
 
 
     }
@@ -38,7 +38,9 @@ async function getItem(url) {
 
 getItem(getItemUrl);
 
-function createDetailsHtml(item) {
+function createItemDetails(item) {
+
+    
     itemContainer.innerHTML = `<h1>${item.title}</h1>
                                 <img src="${item.media[0]}" class="card-img" alt=".." />
                                 <div class="listing_info">

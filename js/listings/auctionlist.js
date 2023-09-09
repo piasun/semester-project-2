@@ -5,6 +5,25 @@ export function auctionList(bid) {
 
 //create list of auction listings
  for (let i = 0; i < bid.length; i++) {
+
+    let endDate = new Date(bid.endsAt);
+    let now = new Date().getTime();
+    let distance = endDate - now;
+
+    let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+    let bidTime = "";
+    bidTime = days + "d " + hours + "h " + minutes + "m ";
+
+   
+    if (distance < 0) {
+      bidTime = "CLOSED";
+    }
+
+    let dateWrite = new Date(bid.endsAt);
+    let deadline = dateWrite.toLocaleString("default", { day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" });
         
                 listingContainer.innerHTML += `
                                         <div class="col-lg-4 col-md-6 col-sm-12">
@@ -17,6 +36,11 @@ export function auctionList(bid) {
                                                     <div class="category">
                                                         <div>#${bid[i].tags}</div>
                                                     </div>
+                                                    <div>
+                                                    <p>Auction ends:</p>
+                                                    <p class="timeLeft">${bidTime}</p>
+                                                    <p class="timeLeft">${deadline}</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                             </a>
@@ -24,4 +48,16 @@ export function auctionList(bid) {
             
 
      }
+
+     const timeLeft = document.getElementsByClassName("timeLeft");
+     for(let i = 0; i < timeLeft.length; i++) {
+
+     let bidEnding = timeLeft[i].innerHTML;
+     
+     if (bidEnding !== "CLOSED") {
+        timeLeft[i].classList.add("not-expired");
+     } else {
+        timeLeft[i].classList.add("expired");
+     }    
+ }
 } 
