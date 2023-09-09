@@ -12,7 +12,7 @@ let id = params.get("id");
 
 
 const getItemUrl = `${completeListings}/${id}/${specificItem}`;
-const makeBidUrl = `${completeListings}/${id}/bids`;
+//const makeBidUrl = `${completeListings}/${id}/bids`;
 
 async function getItem(url) {
 
@@ -41,13 +41,23 @@ getItem(getItemUrl);
 function createItemDetails(item) {
 
     
-    itemContainer.innerHTML = `<h1>${item.title}</h1>
-                                <img src="${item.media[0]}" class="card-img" alt=".." />
-                                <div class="listing_info">
-                                    <p class="bid_amount">Bids: ${item._count.bids}</p>
-                                    <div class="category">
-                                        <div>#${item.tags}</div>
+    itemContainer.innerHTML = `<div class="col-lg-4 col-md-6 col-sm-12">
+                                    <div class="card mt-5">
+                                        <img src="${item[i].media[0]}" class="card-img" alt=".." />
+                                        <div class="listing_info">
+                                            <h1>${item[i].title}</h1>
+                                            <p class="bid_amount">Bids: ${item[i]._count.bids}</p>
+                                            <div class="category">
+                                                <div>#${item[i].tags}</div>
+                                            </div>
+                                            <div>
+                                            <p>Auction ends:</p>
+                                            <p class="timeLeft">${bidTime}</p>
+                                            <p class="timeLeft">${deadline}</p>
+                                            </div>
+                                        </div>
                                     </div>
+                                    </a>
                                 </div>
                                 `;
 }
