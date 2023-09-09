@@ -27,17 +27,15 @@ async function getItem(url) {
             }
         }
         const response = await fetch(url, options);
-        const item = await response.json();
+        const result = await response.json();
 
 
         const headTitle = document.querySelector ("title");
-        headTitle.innerHTML = `${item.title}`; 
+        headTitle.innerHTML = `${result.title}`; 
 
-        collection = item;
-        //console.log("Collection:", collection);
-        listAuction(item, outElement);
+        collection = result;
+        listSingleAuction(result, outElement);
         
-
     }
     catch (error) {
         const outElement = document.getElementById("item-details");
@@ -50,9 +48,8 @@ getItem(getItemUrl);
 
 const outElement = document.getElementById("item-details");
 
-
-function listAuction(item, out){
-
+function listSingleAuction(item){
+    
     let date = new Date(item.endsAt);
     let now = new Date().getTime();
     let distance = date - now;
@@ -82,60 +79,25 @@ function listAuction(item, out){
     }
     getHighestBid(allBids);
 
-
     const numberOfBids = document.getElementById("number-of-bids")
     numberOfBids.innerHTML = `Highest bid: ${highestBid}`;
 
-    //---------------------------------------------------------------------------------------------------------------
-    let placeholder =
-    "/images/No-Image-Placeholder.svg.png";
-    let mediaList;
-
- 
-  if (item.media.length <= 0) {
-    mediaList = `<img class="h-100 w-100" src="${placeholder}" alt="Placeholder image" style="object-fit: cover;">`;
-  } else if (item.media.length === 1) {
-    mediaList = `
-                <img class="h-100 w-100" src="${item.media[0]}" alt="Placeholder image" style="object-fit: cover;">
-        `;
-  } 
-  
-        let newItem = "";
-        newItem += `
-                      <div class="mb-5 col-lg-12 col-md-8" id="singleMedia">
-                          <div id="mediaCont" >
-                           <div>
-                              ${mediaList}
-                           </div> 
-                      </div>
-
-                      <h2 class="my-4">${item.title}</h2>
-                      <p>${item.description}</p>
-
-                      <div class="card-body d-flex">
-                        <p>Auction ends: </p>
-                        <p class=" timer">${bidTime}</p>
-                     </div>
-                     <h2 class="mt-4">Bidders: (${item._count.bids})</h2>
-            `;
-      const sendBidBtn = document.getElementById("create-bid-btn");
-      sendBidBtn.addEventListener("click", createBidForm);
+    const sendBidBtn = document.getElementById("create-bid-btn");
+    sendBidBtn.addEventListener("click", createBidForm);
     
-    out.innerHTML = newItem;
 
 
-    //TIMER
+//Timer
     const timer = document.querySelector(".timer");
     let bidEnding = timer.innerHTML;
-    if (bidEnding !== "SOLD") {
-        timer.classList.add("not-sold");
+    if (bidEnding !== "EXPIRED") {
+        timer[i].classList.add("not-expired");
     } else {
-        timer.classList.add("sold");
-    }
+            timer[i].classList.add("expired");
+    }    
 
-  // DISPLAY ELEMENTS BASED ON LOGGED IN OR NOT
-  //My bid
-  //expired
+
+  //make Bid
   const makeBid = document.getElementById("make-a-bid");
   const myBid = document.getElementById("my-bid");
   const userNotSignedIn = document.getElementById("user-not-signedin");
