@@ -18,9 +18,9 @@ export async function createBid(url, data) {
         if (response.status === 200) {
           window.location.reload();
         } else {
-          bidErrorMsg.innerHTML ="Something went wrong, please try again";
+          bidErrorMsg.innerHTML = result.errors[0].message;
         }
-        console.log(answer);
+        console.log(result);
       } catch (error) {
         console.log(error);
       }
