@@ -38,7 +38,7 @@ export async function addListing(url, data) {
     }
 }
 
-addListing(createListing);
+//addListing(createListing);
 
 const titleMsg = document.getElementById("titleMsg");
 const descMsg = document.getElementById("descMsg");

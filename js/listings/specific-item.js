@@ -191,8 +191,8 @@ async function deleteInputs (id) {
     }
 }
 
-//----------------------------------------------------------------------------------------------------------
-//GET BIDS AND LIST OUT
+
+//List out all bids
 async function getSingleBids (url) {
     try {
         const accessToken = localStorage.getItem('accessToken'); 
@@ -244,7 +244,7 @@ function allBids(list, bidders) {
     bidders.innerHTML = newItem;
 }
 
-//----------------------------------------------------------------------------------------------------------
+
 //make a Bid 
 async function createBid(url, data) {
     try {
