@@ -23,11 +23,11 @@ by Pia Sundsby
 ![gantchart](https://github.com/piasun/semester-project-2/assets/77275966/7645673d-6a21-4437-b057-0180390c41d5)
 
 ## Installation
-1. Clone the repo
+1. Clone the repo: 
    gh repo clone piasun/semester-project-2
-2. Install NPM packages
+2. Install NPM packages: 
    npm install
-3. Run Build to enable SASS
+3. Run Build to enable SASS: 
    npm run build 
 
 ## Built with
