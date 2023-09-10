@@ -1,4 +1,6 @@
-# semester-project-2: Pia Sundsby
+# Semester-project-2:
+# ListIt Auction website
+# by Pia Sundsby
 
 
 
