@@ -2,6 +2,7 @@
 ListIt Auction website
 by Pia Sundsby
 
+![website-listit](https://github.com/piasun/semester-project-2/assets/77275966/365bda7a-7b68-41c3-ae77-16c01e88d64b)
 
 
 ## Link to the task
@@ -13,6 +14,15 @@ by Pia Sundsby
 - [Style Guide](https://www.figma.com/file/HN0MRSL5RrIxL5AzUe3ZqZ/Semester-Project-2?type=design&node-id=305%3A101&mode=design&t=JQ3lnmhSHSIMvzDM-1)
 - [Wireframe / Design / Prototype](https://www.figma.com/file/HN0MRSL5RrIxL5AzUe3ZqZ/Semester-Project-2?type=design&node-id=0%3A1&mode=design&t=EamAKqHgRYgoeywV-1)
 - [Delivery](https://list-it-auction-website.netlify.app/)
+
+
+## Trello
+![trello-board](https://github.com/piasun/semester-project-2/assets/77275966/79aaec16-f401-4964-80c3-32803653aac9)
+
+## Gant Chart
+
+
+
 
 ## Built with
 
