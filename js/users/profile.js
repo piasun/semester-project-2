@@ -9,7 +9,7 @@ const username = localStorage.getItem('username');
 
 const profileUrl = `${completeProfile}${username}?_listings=true`;
 //const updateAvatarUrl = `${completeProfile}${username}/media`;
-//const userBidsUrl = `${completeProfile}${username}/bids?_listings=true`;
+
 
 let profileAccount = [];
 

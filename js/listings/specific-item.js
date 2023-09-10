@@ -175,7 +175,6 @@ async function deleteInputs(id) {
 
 
     const response = await fetch(url, options);
-    
     const answer = await response.json();
    
     if (response.status === 204) {
