@@ -10,7 +10,7 @@ export function logoutButton() {
 
             if(doLogout) {
                 clearStorage();
-                location.href = "/";
+                location.href = "/index.html";
             }
         }
     }

@@ -1,9 +1,10 @@
 import { displayErrorMessage } from "../functions/errormessage.js";
 import { completeListings } from "../api/url.js";
 import { isLoggedIn } from "../templates/nav.js";
-
+import { logoutButton } from "../functions/logout.js";
 
 isLoggedIn();
+logoutButton();
 
 const specificItem = "?_seller=true&_bids=true";
 const deleteUrl = `${completeListings}`;
@@ -14,7 +15,7 @@ let id = params.get("id");
 const getItemUrl = `${completeListings}/${id}/${specificItem}`;
 const makeBidUrl = `${completeListings}/${id}/bids`;
 
-let collection = [];
+let singleAuction = [];
 
 async function getItem(url) {
 
@@ -33,7 +34,7 @@ async function getItem(url) {
         const headTitle = document.querySelector ("title");
         headTitle.innerHTML = `${result.title}`; 
 
-        collection = result;
+        singleAuction = result;
         listSingleAuction(result, outElement);
         
     }
@@ -48,7 +49,7 @@ getItem(getItemUrl);
 
 const outElement = document.getElementById("item-details");
 
-function listSingleAuction(item){
+function listSingleAuction(item, out){
     
     let date = new Date(item.endsAt);
     let now = new Date().getTime();
@@ -82,10 +83,34 @@ function listSingleAuction(item){
     const numberOfBids = document.getElementById("number-of-bids")
     numberOfBids.innerHTML = `Highest bid: ${highestBid}`;
 
-    const sendBidBtn = document.getElementById("create-bid-btn");
-    sendBidBtn.addEventListener("click", createBidForm);
-    
+    //get specific item
 
+    const itemImg =
+    item.media.length === 0 || item.media === "undefined"
+    ? 
+      "/images/No-Image-Placeholder.svg.png"
+      : `${item.media[0]}`;
+  
+        let newItem = "";
+        newItem += `
+                      <div class="mb-5 col-lg-12 col-md-8">
+                      <img src="${itemImg}" class="card-img-top card-img" alt="..">
+                      </div>
+
+                      <h2 class="my-4">${item.title}</h2>
+                      <p>${item.description}</p>
+
+                      <div class="card-body d-flex">
+                        <p>Auction ends: </p>
+                        <p class="timer">${bidTime}</p>
+                     </div>
+                     <h2 class="mt-4">Bidders: (${item._count.bids})</h2>
+            `;
+      const sendBidBtn = document.getElementById("create-bid-btn");
+      sendBidBtn.addEventListener("click", createBidForm);
+    
+    out.innerHTML = newItem;
+    console.log(newItem);
 
 //Timer
     const timer = document.querySelector(".timer");
@@ -132,17 +157,16 @@ function listSingleAuction(item){
 
     displayBid()
 
-          //Delete listing
+          //Delete Bid
           const deleteBid = document.getElementById("delete-bid-btn");
           deleteBid.addEventListener("click", () => {
-               //console.log("btn attribute:", btnDelete.getAttribute('data-delete'));
                if ( confirm('Are you sure you want to delete your bid?')){
                    deleteInputs(item.id);
                }
          }) 
 }
 
-// DELETE POST
+// Delete Inputs
 async function deleteInputs (id) {
     const url = `${deleteUrl}${id}`;
      try {
@@ -183,8 +207,8 @@ async function getSingleBids (url) {
         const bids = await response.json();
      
         const result = bids.bids
-        //console.log("listBids:", answer);
-        listBids(result, secondElement)   
+        allBids(result, biddersElement)   
+
     } catch(error) {
         console.log(error);
     }
@@ -192,10 +216,10 @@ async function getSingleBids (url) {
 
 getSingleBids(getItemUrl);
 
-const secondElement = document.getElementById("bid-container")
+const biddersElement = document.getElementById("bid-container")
 
-function listBids(list, second) {
-    second.innerHTML = "";
+function allBids(list, bidders) {
+    bidders.innerHTML = "";
     let newItem = "";
 
     list.sort(function(a, b){
@@ -217,11 +241,11 @@ function listBids(list, second) {
                           </li>
                       </ul>`
     } 
-    second.innerHTML = newItem;
+    bidders.innerHTML = newItem;
 }
 
 //----------------------------------------------------------------------------------------------------------
-//MAKE A BID 
+//make a Bid 
 async function createBid(url, data) {
     try {
       const accessToken = localStorage.getItem("accessToken");
@@ -273,7 +297,7 @@ function createBidForm(event) {
         if (!accessToken) {
             
            alert("You have to sign in to place a bid!");
-           window.location.href = "./login.html";
+           window.location.href = "/signin.html";
         }
       }
       

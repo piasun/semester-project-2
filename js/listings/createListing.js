@@ -1,7 +1,9 @@
 import { completeListings } from "../api/url.js";
 import { isLoggedIn } from "../templates/nav.js";
+import { logoutButton } from "../functions/logout.js";
 
 isLoggedIn();
+logoutButton();
 
 
 const itemTitle = document.querySelector(".itemTitle");
@@ -23,7 +25,7 @@ export async function addListing(url, data) {
             },
             body: JSON.stringify(data),
         };
-       console.log("Url:", url,"Data:", data,"Options:", options);
+       //console.log("Url:", url,"Data:", data,"Options:", options);
 
         const response = await fetch(url, options); 
         const answer = await response.json();
@@ -35,6 +37,8 @@ export async function addListing(url, data) {
         console.log(error);
     }
 }
+
+addListing(createListing);
 
 const titleMsg = document.getElementById("titleMsg");
 const descMsg = document.getElementById("descMsg");

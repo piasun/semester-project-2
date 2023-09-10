@@ -1,0 +1,19 @@
+{
+  "name": "semester-project-2",
+  "version": "1.0.0",
+  "description": "My Semester Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piasun/semester-project-2.git"
+  },
+  "author": "Pia Sundsby",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/piasun/semester-project-2/issues"
+  },
+  "homepage": "https://github.com/piasun/semester-project-2#readme"
+}

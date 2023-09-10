@@ -1,9 +1,14 @@
 import { completeListings } from "../api/url.js";
 import { displayErrorMessage } from "../functions/errormessage.js";
+import { isLoggedIn } from "../templates/nav.js";
+import { logoutButton } from "../functions/logout.js";
+
+isLoggedIn();
+logoutButton();
 
 let itemUrl = completeListings;
 
-let collection = [];
+let allAuctions = [];
 
 async function getListings (url) {
     try {
@@ -18,7 +23,7 @@ async function getListings (url) {
         const response = await fetch(url, options); 
         const result = await response.json();
     
-        collection = result;
+        allAuctions = result;
         getAllAuction(result, outElement)
 
     } catch(error) {
@@ -103,4 +108,19 @@ let deadline = dateWrite.toLocaleString("default", { day: "numeric", month: "lon
              timer[i].classList.add("expired");
         }    
     }
+}
+
+const searchField = document.getElementById("search-listings");
+searchField.addEventListener("keyup", filterListings);
+
+function filterListings () {
+    const filterListings = searchField.value.toLocaleLowerCase();
+
+    const search = collection.filter((item) => {
+        const title = item.title.toLocaleLowerCase();
+        if (title.indexOf(filterListings) > -1) return true;
+        return false;
+    })
+
+    getAllAuction(search, outElement);
 }
