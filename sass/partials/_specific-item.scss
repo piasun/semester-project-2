@@ -1,4 +1,22 @@
-.item-details {
-    margin-top: 20px;
+main {
+    background-color: #D9D9D9;
+    
+}
+
+#item-details img {
+    border-radius: 5px 5px 0 0;
 
 }
+
+#item-details {
+    margin-top: 20px;
+    background-color: $background-color;
+    border-radius: 5px; 
+}
+
+.card-body {
+    padding: 10px;
+    background-color: $secondary-color;
+    color: $background-color;
+}
+

@@ -6,34 +6,37 @@ isLoggedIn();
 logoutButton();
 
 
-const itemTitle = document.querySelector(".itemTitle");
-const itemContent = document.querySelector(".itemContent");
-const itemImage = document.querySelector(".itemImage");
-const endsBid = document.querySelector(".endBid");
+const itemTitle = document.getElementById("itemTitle")
+const itemContent = document.getElementById("itemContent");
+const itemImage = document.getElementById("itemImage");
+const itemMediaInput = document.getElementById("itemImage");
+const endsBid = document.getElementById("endBid");
 const submitItemBtn = document.querySelector(".submitItem");
+
 
 const createListing = completeListings;
 
 export async function addListing(url, data) {
     try {
-        const accessToken = localStorage.getItem('accessToken'); 
+        const accessToken = localStorage.getItem('accessToken');
         const options = {
-            method: 'POST', 
-            headers : {
+            method: 'POST',
+            headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${accessToken}`,
             },
             body: JSON.stringify(data),
         };
-       //console.log("Url:", url,"Data:", data,"Options:", options);
+        //console.log("Url:", url,"Data:", data,"Options:", options);
 
-        const response = await fetch(url, options); 
+        const response = await fetch(url, options);
         const answer = await response.json();
+        console.log(answer);
 
         if (answer.id) {
-            window.location = "./index.html";
-          }
-    } catch(error) {
+            // window.location = "./index.html";
+        }
+    } catch (error) {
         console.log(error);
     }
 }
@@ -48,26 +51,29 @@ const endbidMsg = document.getElementById("endbidMsg");
 submitItemBtn.addEventListener('click', createNewListingForm);
 function createNewListingForm(event) {
     event.preventDefault();
-
     const title = itemTitle.value.trim();
     const description = itemContent.value.trim();
     const itemImg = itemImage.value.trim();
     const endsAt = endsBid.value.trim();
+    const media = itemMediaInput.value.trim();
+    console.log(title)
+
+    console.log(media)
 
     const listingData = {
         title: title,
         description: description,
-        media: media,
-        endsAt: endsAt,   
-       };
+        media: [media],
+        endsAt: endsAt,
+    };
     console.log(listingData);
 
     const enteredTitle = title;
     titleMsg.innerHTML = "";
-     if (enteredTitle.length < 1) {
-     titleMsg.innerHTML = 'Your title has to be at least 1 or more characters.';
-     }
-     
+    if (enteredTitle.length < 1) {
+        titleMsg.innerHTML = 'Your title has to be at least 1 or more characters.';
+    }
+
     descMsg.innerHTML = "";
     const enteredDesc = description;
     if (enteredDesc.length < 1) {
@@ -78,9 +84,10 @@ function createNewListingForm(event) {
     mediaMsg.innerHTML = "";
     let itemMedia = /\.(jpeg|jpg|gif|png|svg)$/;
     if (enteredMedia === "") {
-        enteredMedia.innerHTML = "There is no image of the item";
-    } else if (!enteredMedia.value == "" && !itemMedia.test(enteredMedia))
-    { enteredMedia.innerHTML = "Please enter a valid image url!";}
+        mediaMsg.innerHTML = "There is no image of the item";
+    } else if (enteredMedia !== "" && !itemMedia.test(enteredMedia)) {
+        mediaMsg.innerHTML = "Please enter a valid image url!";
+    }
 
     endbidMsg.innerHTML = "";
     const enteredEndbid = endsAt;
@@ -88,10 +95,10 @@ function createNewListingForm(event) {
         endbidMsg.innerHTML = 'You have to add a date and time to end your auction!'
     }
 
-      if (titleMsg.innerHTML === "" && descMsg.innerHTML === "" && mediaMsg.innerHTML === "") {
+    if (titleMsg.innerHTML === "" && descMsg.innerHTML === "" && mediaMsg.innerHTML === "") {
         console.log("Form is submitted!");
-     }
-     else {
+    }
+    else {
         console.log("Are you sure you have everything right?");
     }
     addListing(createListing, listingData);

@@ -95,18 +95,18 @@ function listSingleAuction(item, out) {
 
   let newItem = "";
   newItem += `
-                      <div class="mb-5 col-lg-12 col-md-8">
-                      <img src="${itemImg}" class="card-img-top card-img" alt="..">
-                      </div>
-
-                      <h2 class="my-4">${item.title}</h2>
-                      <p>${item.description}</p>
-
-                      <div class="card-body d-flex">
-                        <p>Auction ends: </p>
-                        <p class="timer">${bidTime}</p>
+                      <div class="mb-5 col-lg-12 col-md-6">      
+                        <img src="${itemImg}" class="card-img-top card-img" alt="..">
+                        <div class="card-body">
+                        <h2 class="my-4">${item.title}</h2>
+                        <p>${item.description}</p>
+                        <div class="d-flex">
+                          <p>Auction ends: </p>
+                          <p>${bidTime}</p>
+                        </div>
+                        <h2 class="mt-4">Bidders: (${item._count.bids})</h2>
+                        </div>
                      </div>
-                     <h2 class="mt-4">Bidders: (${item._count.bids})</h2>
             `;
   const sendBidBtn = document.getElementById("submit-bid-btn");
   sendBidBtn.addEventListener("click", createBidForm);

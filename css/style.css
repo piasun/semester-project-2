@@ -12054,6 +12054,22 @@ h2, .h2 {
   border-radius: 40px 0;
 }
 
-.item-details {
+main {
+  background-color: #D9D9D9;
+}
+
+#item-details img {
+  border-radius: 5px 5px 0 0;
+}
+
+#item-details {
   margin-top: 20px;
+  background-color: #faf6f4;
+  border-radius: 5px;
+}
+
+.card-body {
+  padding: 10px;
+  background-color: #d6663a;
+  color: #faf6f4;
 }/*# sourceMappingURL=style.css.map */
