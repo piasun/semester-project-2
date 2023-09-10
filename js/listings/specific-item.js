@@ -15,6 +15,8 @@ let id = params.get("id");
 const getItemUrl = `${completeListings}/${id}/${specificItem}`;
 const makeBidUrl = `${completeListings}/${id}/bids`;
 
+console.log(getItemUrl);
+
 let singleAuction = [];
 
 async function getItem(url) {

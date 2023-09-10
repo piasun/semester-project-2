@@ -12,8 +12,8 @@
       width="32"
       height="32"
     />
-    <script type="module" src="js/index.js"></script>
-    <script type="module" src="js/listings/listings.js"></script>
+    <script type="module" src="js/index.js" defer></script>
+    <script type="module" src="js/listings/listings.js" defer></script>
     <link rel="stylesheet" href="css/style.css" />
     <script
       src="https://kit.fontawesome.com/b318972c4d.js"
@@ -78,7 +78,11 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-6">
-            <img src="images/bid_small.jpeg" class="img-fluid" alt="..." />
+            <img
+              src="images/bid_small.jpeg"
+              class="img-fluid main-image"
+              alt="..."
+            />
           </div>
           <div class="col-lg-6 m-auto text-center mt-5 welcome">
             <h1>Welcome to List It!</h1>
@@ -87,18 +91,20 @@
       </div>
     </section>
     <section>
-      <div class="container">
+      <div class="container text-center btn-container">
         <div class="row">
-          <div class="col">
+          <div class="col-6">
             <a href="register.html">
-              <button type="button" class="btn btn-primary">
+              <button type="button" class="btn btn-primary btn-lg">
                 Create profile
               </button>
             </a>
           </div>
-          <div class="col">
+          <div class="col-6">
             <a href="signin.html">
-              <button type="button" class="btn btn-primary">Sign In</button>
+              <button type="button" class="btn btn-primary btn-lg">
+                Sign In
+              </button>
             </a>
           </div>
         </div>

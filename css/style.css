@@ -11985,10 +11985,76 @@ body {
 footer {
   display: flex;
   flex-shrink: 0;
-  justify-content: space-between;
+  justify-content: center;
   background-color: #faf6f4;
   margin-top: 2rem;
   font-size: 0.8em;
   color: #152f5f;
   padding: 0.5em;
+}
+
+.navbar-brand {
+  font-family: "Julius Sans One", sans-serif;
+  font-size: 32px;
+}
+
+.navbar {
+  color: white;
+  text-transform: uppercase;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
+  font-size: 15px;
+}
+
+.navbar-collapse {
+  z-index: 1;
+}
+
+h1, .h1 {
+  font-size: 30px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  color: #152f5f;
+}
+
+h2, .h2 {
+  font-size: 23px;
+}
+
+.main-image {
+  border-radius: 5px;
+}
+
+.welcome {
+  background-color: #d6663a;
+  padding: 50px;
+  border-radius: 5px;
+  opacity: 0.8;
+}
+
+.btn-container {
+  margin: 20px;
+}
+
+.btn-primary {
+  padding: 10px;
+}
+
+.card {
+  border-radius: 40px 2px 2px 2px;
+}
+
+.card-img {
+  width: 100%;
+  height: 250px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 40px 0;
+}
+
+.card-img {
+  width: 100%;
+  border-radius: 40px 0;
 }/*# sourceMappingURL=style.css.map */
