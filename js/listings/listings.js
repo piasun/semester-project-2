@@ -118,9 +118,9 @@ function filterListings () {
 
     const search = collection.filter((item) => {
         const title = item.title.toLocaleLowerCase();
-        if (title.indexOf(filterListings) > -1) return true;
-        return false;
+        return title.includes(filterListings);
     })
 
     getAllAuction(search, outElement);
 }
+

@@ -51,7 +51,7 @@ async function regNewUser(url, data) {
         const result = await response.json();
 
         if (response.status === 201) {
-            window.location = "profile.html";
+            window.location = "/register.html";
         } else if (result.errors[0].message === "Profile already exists") {
             errorMessage.innerHTML = `This profile already exists!`;
         }
