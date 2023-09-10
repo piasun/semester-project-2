@@ -12042,6 +12042,18 @@ h2, .h2 {
   padding: 10px;
 }
 
+.all-listings {
+  background-color: #D9D9D9;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.divider {
+  border-top: 3px solid #152f5f;
+  border-radius: 5px;
+  margin: 20px;
+}
+
 .card {
   border-radius: 40px 2px 2px 2px;
 }
@@ -12068,7 +12080,7 @@ main {
   border-radius: 5px;
 }
 
-.card-body {
+.single-auction-body {
   padding: 10px;
   background-color: #d6663a;
   color: #faf6f4;

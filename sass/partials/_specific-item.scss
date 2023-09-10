@@ -1,11 +1,10 @@
 main {
-    background-color: #D9D9D9;
+    background-color: $second-background-color;
     
 }
 
 #item-details img {
     border-radius: 5px 5px 0 0;
-
 }
 
 #item-details {
@@ -14,7 +13,7 @@ main {
     border-radius: 5px; 
 }
 
-.card-body {
+.single-auction-body {
     padding: 10px;
     background-color: $secondary-color;
     color: $background-color;

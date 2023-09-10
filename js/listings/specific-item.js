@@ -97,7 +97,7 @@ function listSingleAuction(item, out) {
   newItem += `
                       <div class="mb-5 col-lg-12 col-md-6">      
                         <img src="${itemImg}" class="card-img-top card-img" alt="..">
-                        <div class="card-body">
+                        <div class="single-auction-body">
                         <h2 class="my-4">${item.title}</h2>
                         <p>${item.description}</p>
                         <div class="d-flex">
