@@ -20,4 +20,4 @@
 
 ## Delivery
 - [Github Repo](https://github.com/piasun/semester-project-2)
-- [Netlify App]()
+- [Netlify App](list-it-auction-website.netlify.app)
