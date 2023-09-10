@@ -20,6 +20,7 @@ by Pia Sundsby
 ![trello-board](https://github.com/piasun/semester-project-2/assets/77275966/79aaec16-f401-4964-80c3-32803653aac9)
 
 ## Gant Chart
+![gantchart](https://github.com/piasun/semester-project-2/assets/77275966/7645673d-6a21-4437-b057-0180390c41d5)
 
 
 
