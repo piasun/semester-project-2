@@ -12,7 +12,7 @@
       width="32"
       height="32"
     />
-    <script type="module" src="js/listings/specific-item.js" defer></script>
+    <script type="module" src="js/listings/specific-item.js"></script>
     <link rel="stylesheet" href="css/style.css" />
     <script
       src="https://kit.fontawesome.com/b318972c4d.js"
@@ -90,13 +90,12 @@
                     class="form-control mb-2"
                     placeholder="0 Credits"
                   />
-                  <a href="/register"
-                    ><input
-                      type="submit"
-                      id="submit-bid-btn"
-                      value="SUBMIT A BID"
-                      class="btn btn-secondary mx-auto w-100"
-                  /></a>
+                  <button
+                    id="submit-bid-btn"
+                    class="btn btn-secondary mx-auto w-100"
+                  >
+                    SUBMIT
+                  </button>
                   <p class="msg-element" id="bid-msg"></p>
                   <p
                     class="text-success justify-content-start text-center"

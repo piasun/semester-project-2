@@ -19,80 +19,82 @@ let singleAuction = [];
 
 async function getItem(url) {
 
-    try {
-        const accessToken = localStorage.getItem('accessToken'); 
-        const options = {
-            method: 'GET', 
-            headers : {
-                Authorization: `Bearer ${accessToken}`,
-            }
-        }
-        const response = await fetch(url, options);
-        const result = await response.json();
-
-
-        const headTitle = document.querySelector ("title");
-        headTitle.innerHTML = `${result.title}`; 
-
-        singleAuction = result;
-        listSingleAuction(result, outElement);
-        
+  try {
+    const outElement = document.getElementById("item-details");
+    const accessToken = localStorage.getItem('accessToken');
+    const options = {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      }
     }
-    catch (error) {
-        const outElement = document.getElementById("item-details");
-        displayErrorMessage(outElement); 
+    const response = await fetch(url, options);
+    const result = await response.json();
 
-    }
+
+    const headTitle = document.querySelector("title");
+    headTitle.innerHTML = `${result.title}`;
+
+    singleAuction = result;
+    listSingleAuction(result, outElement);
+
+  }
+  catch (error) {
+    const outElement = document.getElementById("item-details");
+    displayErrorMessage(outElement);
+    console.log(error);
+
+  }
 }
 
 getItem(getItemUrl);
 
-const outElement = document.getElementById("item-details");
 
-function listSingleAuction(item, out){
-    
-    let date = new Date(item.endsAt);
-    let now = new Date().getTime();
-    let distance = date - now;
-    let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+function listSingleAuction(item, out) {
 
-    let bidTime = "";
-    bidTime = days + "d " + hours + "h " + minutes + "m ";
-    
-    if (distance < 0) {
-      bidTime = "EXPIRED";
-    }
+  let date = new Date(item.endsAt);
+  let now = new Date().getTime();
+  let distance = date - now;
+  let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+  let bidTime = "";
+  bidTime = days + "d " + hours + "h " + minutes + "m ";
+
+  if (distance < 0) {
+    bidTime = "EXPIRED";
+  }
 
   // Display the highest bid
-    const allBids = item.bids;
-    let highestBid = 0;
-  
-    function getHighestBid(allBids) {
-      if (allBids.length !== 0) {
-        highestBid = allBids
-          .map((o) => o.amount)
-          .reduce(function (a, b) {
-            return Math.max(a, b);
-          });
-      }
+  const allBids = item.bids;
+  let highestBid = 0;
+
+  function getHighestBid(allBids) {
+    if (allBids.length !== 0) {
+      highestBid = allBids
+        .map((o) => o.amount)
+        .reduce(function (a, b) {
+          return Math.max(a, b);
+        });
     }
-    getHighestBid(allBids);
+  }
+  getHighestBid(allBids);
 
-    const numberOfBids = document.getElementById("number-of-bids")
-    numberOfBids.innerHTML = `Highest bid: ${highestBid}`;
+  const numberOfBids = document.getElementById("number-of-bids")
+  numberOfBids.innerHTML = `Highest bid: ${highestBid}`;
 
-    //get specific item
+  //get specific item
 
-    const itemImg =
+  const itemImg =
     item.media.length === 0 || item.media === "undefined"
-    ? 
+      ?
       "/images/No-Image-Placeholder.svg.png"
       : `${item.media[0]}`;
-  
-        let newItem = "";
-        newItem += `
+
+
+  let newItem = "";
+  newItem += `
                       <div class="mb-5 col-lg-12 col-md-8">
                       <img src="${itemImg}" class="card-img-top card-img" alt="..">
                       </div>
@@ -102,122 +104,125 @@ function listSingleAuction(item, out){
 
                       <div class="card-body d-flex">
                         <p>Auction ends: </p>
-                        <p>${bidTime}</p>
+                        <p class="timer">${bidTime}</p>
                      </div>
                      <h2 class="mt-4">Bidders: (${item._count.bids})</h2>
             `;
-      const sendBidBtn = document.getElementById("submit-bid-btn");
-      sendBidBtn.addEventListener("click", createBidForm);
-    
-    out.innerHTML = newItem;
-    console.log(newItem);
+  const sendBidBtn = document.getElementById("submit-bid-btn");
+  sendBidBtn.addEventListener("click", createBidForm);
+
+  out.innerHTML = newItem;
+
+
+
 
   //make Bid
   const makeBid = document.getElementById("make-a-bid");
   const myBid = document.getElementById("my-bid");
   const userNotSignedIn = document.getElementById("user-not-signedin");
   const bidExpired = document.getElementById("bid-expired");
- 
+
 
   function displayBid() {
     const accessToken = localStorage.getItem("accessToken");
     const userName = localStorage.getItem("username");
     if (accessToken && userName !== item.seller.name) {
-        myBid.style.display="none";
-        userNotSignedIn.style.display="none";
-        bidExpired.style.display="none";        
-    } 
+      myBid.style.display = "none";
+      userNotSignedIn.style.display = "none";
+      bidExpired.style.display = "none";
+    }
     else if (accessToken && userName === item.seller.name) {
-        makeBid.style.display="none";
-        userNotSignedIn.style.display="none";
-        bidExpired.style.display="none"; 
+      makeBid.style.display = "none";
+      userNotSignedIn.style.display = "none";
+      bidExpired.style.display = "none";
     }
     else if (!accessToken) {
-        makeBid.style.display="none";
-        myBid.style.display="none";
-        bidExpired.style.display="none";
+      makeBid.style.display = "none";
+      myBid.style.display = "none";
+      bidExpired.style.display = "none";
     }
-    else if (timer.innerHTML="EXPIRED") {
-        makeBid.style.display="none";
-        myBid.style.display="none";
-        userNotSignedIn.style.display="none";
-    }
-       
+    else if (timer.innerHTML = "EXPIRED") {
+      makeBid.style.display = "none";
+      myBid.style.display = "none";
+      userNotSignedIn.style.display = "none";
     }
 
-    displayBid()
+  }
 
-          //Delete Bid
-          const deleteBid = document.getElementById("delete-bid-btn");
-          deleteBid.addEventListener("click", () => {
-               if ( confirm('Are you sure you want to delete your bid?')){
-                   deleteInputs(item.id);
-               }
-         }) 
+  displayBid()
+
+  //Delete Bid
+  const deleteBid = document.getElementById("delete-bid-btn");
+  deleteBid.addEventListener("click", () => {
+    if (confirm('Are you sure you want to delete your bid?')) {
+      deleteInputs(item.id);
+    }
+  })
 }
 
 // Delete Inputs
-async function deleteInputs (id) {
-    const url = `${deleteUrl}${id}`;
-     try {
-        const accessToken = localStorage.getItem('accessToken'); 
-        const options = {
-            method: 'DELETE', 
-            headers : {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${accessToken}`,
-            },
-        };
-        
+async function deleteInputs(id) {
+  const url = `${deleteUrl}${id}`;
+  try {
+    const accessToken = localStorage.getItem('accessToken');
+    const options = {
+      method: 'DELETE',
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    };
 
-        const response = await fetch(url, options); 
-        //console.log("Delete response:", response);
-        //const answer = await response.json();
-        //console.log("Delete answer:", answer);
-        if (response.status === 204) {
-            window.location = "/index.html";
-          }    } catch(error) {
-         console.log(error);
+
+    const response = await fetch(url, options);
+    //console.log("Delete response:", response);
+    //const answer = await response.json();
+    //console.log("Delete answer:", answer);
+    if (response.status === 204) {
+      window.location = "/index.html";
     }
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 
 //List out all bids
-async function getSingleBids (url) {
-    try {
-        const accessToken = localStorage.getItem('accessToken'); 
-        const options = {
-            method: 'GET', 
-            headers : {
-                Authorization: `Bearer ${accessToken}`,
-            }
-        }
-
-        const response = await fetch(url, options); 
-        const bids = await response.json();
-     
-        const result = bids.bids
-        allBids(result, biddersElement)   
-
-    } catch(error) {
-        console.log(error);
+async function getSingleBids(url) {
+  try {
+    const accessToken = localStorage.getItem('accessToken');
+    const options = {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      }
     }
-}   
+
+    const response = await fetch(url, options);
+    const bids = await response.json();
+
+    const result = bids.bids
+    allBids(result, biddersElement)
+
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 getSingleBids(getItemUrl);
 
 const biddersElement = document.getElementById("bid-container")
 
 function allBids(list, bidders) {
-    bidders.innerHTML = "";
-    let newItem = "";
+  bidders.innerHTML = "";
+  let newItem = "";
 
-    list.sort(function(a, b){
-        return b.amount - a.amount
-    })
- 
-    for (let bid of list) {
-        newItem += `
+  list.sort(function (a, b) {
+    return b.amount - a.amount
+  })
+
+  for (let bid of list) {
+    newItem += `
         <ul class="list-unstyled bidder mt-3">
                           <li class="d-flex justify-content-between align-items-center">
                               <div class="d-flex align-items-center">
@@ -230,70 +235,68 @@ function allBids(list, bidders) {
                               <span class="price">${bid.amount}</span>
                           </li>
                       </ul>`
-    } 
-    bidders.innerHTML = newItem;
+  }
+  bidders.innerHTML = newItem;
 }
 
 
 //make a Bid 
 async function createBid(url, data) {
-    try {
-      const accessToken = localStorage.getItem("accessToken");
-     
-      const options = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
-        },
-        body: JSON.stringify(data),
-      };
-   
-      const response = await fetch(url, options);
-      const result = await response.json();
+  try {
+    const accessToken = localStorage.getItem("accessToken");
 
-      const bidErrorMsg = document.getElementById("bid-error-msg");
-      if (response.status === 200) {
-        window.location.reload();
-      } else {
-        bidErrorMsg.innerHTML = result .errors[0].message;
-      }
-      console.log(result );
-    } catch (error) {
-      console.log(error);
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify(data),
+    };
+
+    const response = await fetch(url, options);
+    const result = await response.json();
+
+    const bidErrorMsg = document.getElementById("bid-error-msg");
+    if (response.status === 200) {
+      window.location.reload();
+    } else {
+      bidErrorMsg.innerHTML = result.errors[0].message;
     }
+    console.log(result);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 //Validate bid
 
 function createBidForm(event) {
-    event.preventDefault();
-    const bidInput = document.getElementById("create-bid-input").value.trim();
-    const bidInputMsg = document.getElementById("create-bid-msg");
+  event.preventDefault();
+  const bidInput = document.getElementById("bid-input").value.trim();
+  const bidInputMsg = document.getElementById("create-bid-msg");
 
-    const bidToSend = parseInt(bidInput);
-  
-    let bidData = {
-      amount: bidToSend,
-    };
-  
-    if (!isNaN(bidToSend)) {
-    } else {
-      bidInputMsg.innerHTML = "Bid has to be a number.";
-    }
+  const bidToSend = parseInt(bidInput);
 
-      function isLoggedin() {
-        const accessToken = localStorage.getItem("accessToken");
-        if (!accessToken) {
-            
-           alert("You have to sign in to place a bid!");
-           window.location.href = "/signin.html";
-        }
-      }
-      
-        isLoggedin();
-  
-    createBid(makeBidUrl, bidData);
+  let bidData = {
+    amount: bidToSend,
+  };
+
+  if (!isNaN(bidToSend)) {
+  } else {
+    bidInputMsg.innerHTML = "Bid has to be a number.";
   }
 
+  function isLoggedin() {
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
 
+      alert("You have to sign in to place a bid!");
+      window.location.href = "/signin.html";
+    }
+  }
+
+  isLoggedin();
+
+  createBid(makeBidUrl, bidData);
+}
