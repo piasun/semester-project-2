@@ -15,8 +15,6 @@ let id = params.get("id");
 const getItemUrl = `${completeListings}/${id}/${specificItem}`;
 const makeBidUrl = `${completeListings}/${id}/bids`;
 
-console.log(getItemUrl);
-
 let singleAuction = [];
 
 async function getItem(url) {
@@ -104,25 +102,15 @@ function listSingleAuction(item, out){
 
                       <div class="card-body d-flex">
                         <p>Auction ends: </p>
-                        <p class="timer">${bidTime}</p>
+                        <p>${bidTime}</p>
                      </div>
                      <h2 class="mt-4">Bidders: (${item._count.bids})</h2>
             `;
-      const sendBidBtn = document.getElementById("create-bid-btn");
+      const sendBidBtn = document.getElementById("submit-bid-btn");
       sendBidBtn.addEventListener("click", createBidForm);
     
     out.innerHTML = newItem;
     console.log(newItem);
-
-//Timer
-    const timer = document.querySelector(".timer");
-    let bidEnding = timer.innerHTML;
-    if (bidEnding !== "EXPIRED") {
-        timer[i].classList.add("not-expired");
-    } else {
-            timer[i].classList.add("expired");
-    }    
-
 
   //make Bid
   const makeBid = document.getElementById("make-a-bid");
