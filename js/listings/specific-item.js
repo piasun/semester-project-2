@@ -175,9 +175,9 @@ async function deleteInputs(id) {
 
 
     const response = await fetch(url, options);
-    //console.log("Delete response:", response);
-    //const answer = await response.json();
-    //console.log("Delete answer:", answer);
+    
+    const answer = await response.json();
+   
     if (response.status === 204) {
       window.location = "/index.html";
     }

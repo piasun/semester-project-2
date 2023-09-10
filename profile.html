@@ -66,16 +66,14 @@
       </nav>
     </header>
     <section id="userdetails">
-      <div class="container">
-        <div class="row">
+      <div class="container profile-container">
+        <div class="row align-items-center">
           <div id="profile" class="row">
-            <div class="col-4">
+            <div class="col-lg-4 col-md-6 col-sm-12">
               <h1 id="username"></h1>
-            </div>
-            <div>
               <p id="email"></p>
             </div>
-            <div class="col-4 user-image">
+            <div class="col-lg-4 col-md-6 col-sm-12 user-image">
               <img
                 src=""
                 id="user-avatar"
@@ -84,8 +82,9 @@
                 class="rounded mb-2 img"
               />
             </div>
-            <div class="col-4">
+            <div class="col-lg-4 col-md-6 col-sm-12 profile-assets">
               <p id="credits"></p>
+              <button id="change-avatar">Change avatar</button>
             </div>
           </div>
         </div>
@@ -97,9 +96,6 @@
           <div class="col">
             <a href="createlisting.html">
             <button class="create-listing">Create Listing</button></a>
-          </div>
-          <div class="col">
-            <button id="change-avatar">Change avatar</button>
           </div>
           <div id="avatar-container">
             <form id="change-avatar-form">

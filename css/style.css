@@ -12062,6 +12062,14 @@ h2, .h2 {
   border-radius: 40px 0;
 }
 
+.profile-container {
+  padding: 10px;
+}
+
+.profile-assets {
+  margin-top: 10px;
+}
+
 main {
   background-color: #D9D9D9;
 }
@@ -12078,6 +12086,6 @@ main {
 
 .single-auction-body {
   padding: 10px;
-  background-color: #d6663a;
-  color: #faf6f4;
+  background-color: #faf6f4;
+  color: #152f5f;
 }/*# sourceMappingURL=style.css.map */
