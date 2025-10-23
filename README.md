@@ -91,7 +91,7 @@ by Pia Sundsby
 
 ---
 
-## 📋 Table of Contents
+📋 Table of Contents
 
 - [Trello Board](https://trello.com/invite/b/AVdD1icT/ATTIf14f37766e3002f195a28dec0b46fc2f210537BF/semester-project-2)
 - [Gantt Chart](https://docs.google.com/spreadsheets/d/1ioIp8cBAzkVLoYzlSIMVVukpG8DWxr-L/edit?usp=sharing&ouid=105175313372136630770&rtpof=true&sd=true)
