@@ -76,12 +76,14 @@ project-root/
 ---
 
 ⚙️ Scripts
+
 Since this project is built with vanilla JavaScript, no npm scripts are required.
 Use a simple development server such as Live Server in VS Code to run the project locally.
 
 ---
 
 📸 Preview
+
 ListIt Auction website
 by Pia Sundsby
 
